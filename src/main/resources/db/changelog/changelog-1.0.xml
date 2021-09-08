@@ -1,0 +1,31 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2021-09-07 create table" author="Gristel">
+        <createTable tableName="location">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="weather_info">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="location_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_weather_info_location" references="location(id)"/>
+            </column>
+            <column name="temperature" type="numeric"/>
+            <column name="wind_speed" type="numeric"/>
+            <column name="humidity" type="numeric"/>
+            <column name="time" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
