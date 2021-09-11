@@ -28,4 +28,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="2021-09-11 add column deleted to location table" author="Gristel">
+        <addColumn tableName="location">
+            <column name="is_deleted" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

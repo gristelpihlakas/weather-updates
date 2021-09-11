@@ -3,7 +3,8 @@ package com.weatherupdates.dto;
 public class LocationDto {
 
     private int id;
-    private int name;
+    private String name;
+    private boolean isDeleted;
 
     public int getId() {
         return id;
@@ -13,11 +14,19 @@ public class LocationDto {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }
