@@ -28,10 +28,12 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2021-09-11 add column deleted to location table" author="Gristel">
-        <addColumn tableName="location">
-            <column name="is_deleted" type="boolean"/>
-        </addColumn>
+    <changeSet id="2021-09-12 change foreign key settings" author="Gristel">
+        <dropForeignKeyConstraint baseTableName="weather_info" constraintName="fk_weather_info_location"/>
+
+        <addForeignKeyConstraint baseTableName="weather_info" baseColumnNames="location_id"
+                                 constraintName="fk_weather_info_location" referencedTableName="location"
+                                 referencedColumnNames="id" onDelete="CASCADE"/>
     </changeSet>
 
 </databaseChangeLog>

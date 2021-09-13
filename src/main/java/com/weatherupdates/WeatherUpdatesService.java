@@ -51,7 +51,6 @@ public class WeatherUpdatesService {
         }
     }
 
-    //api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
     public WeatherResponseDto requestWeatherInfo(String location) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<WeatherResponseDto> response = restTemplate.
@@ -72,7 +71,6 @@ public class WeatherUpdatesService {
         return info;
     }
 
-    //set time interval (every 15 minutes - 900000ms)
     @Scheduled(fixedRate = 900000)
     public void getScheduledWeatherUpdates() {
         List<LocationDto> locations = weatherUpdatesRepository.getAllLocationsOnList();
@@ -87,9 +85,6 @@ public class WeatherUpdatesService {
         return weatherUpdatesRepository.displayMyList();
     }
 
-
-
-    //delete a city from the list, but keep its previous logs
     public String deleteLocationFromList(String location) {
         boolean isInList = weatherUpdatesRepository.isAlreadyInList(location);
         if (!isInList) {

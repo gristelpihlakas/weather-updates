@@ -73,15 +73,12 @@ public class WeatherUpdatesRepository {
         return result;
     }
 
-
-    //delete a city from the list, but keep its previous logs
     public void deleteLocationFromList(String location) {
         String sql = "DELETE FROM location WHERE name ILIKE :location";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("location", location);
         jdbcTemplate.update(sql, paramMap);
     }
-
 
     public static class DisplayInfoRowMapper implements RowMapper<DisplayInfoDto> {
 
@@ -104,7 +101,6 @@ public class WeatherUpdatesRepository {
             LocationDto result = new LocationDto();
             result.setId(resultSet.getInt("id"));
             result.setName(resultSet.getString("name"));
-            result.setDeleted(resultSet.getBoolean("is_deleted"));
             return result;
         }
     }

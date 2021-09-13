@@ -15,13 +15,13 @@ public class WeatherUpdatesController {
     private WeatherUpdatesService weatherUpdatesService;
 
     @PostMapping("add-location")
-    public String addLocationToList(@RequestBody AddLocationRequest request) {
+    public String addLocationToList(@RequestBody LocationRequest request) {
         return weatherUpdatesService.addLocationToList(request.getLocation());
     }
 
-    @GetMapping("{location}")
-    public ResponseEntity<List<DisplayInfoDto>> getLocationsWeatherUpdates(@PathVariable("location") String location) {
-        return weatherUpdatesService.getLocationsWeatherUpdates(location);
+    @GetMapping("get-info")
+    public ResponseEntity<List<DisplayInfoDto>> getLocationsWeatherUpdates(@RequestBody LocationRequest request) {
+        return weatherUpdatesService.getLocationsWeatherUpdates(request.getLocation());
     }
 
     @GetMapping("display-list")
@@ -29,10 +29,8 @@ public class WeatherUpdatesController {
         return weatherUpdatesService.displayMyList();
     }
 
-
-    //delete a city from the list, but keep its previous logs
     @DeleteMapping("delete-location")
-    public String deleteLocationFromList(@RequestBody DeleteLocationRequest request) {
+    public String deleteLocationFromList(@RequestBody LocationRequest request) {
         return weatherUpdatesService.deleteLocationFromList(request.getLocation());
     }
 }

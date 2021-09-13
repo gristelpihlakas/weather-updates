@@ -1,6 +1,6 @@
 package com.weatherupdates.dto;
 
-public class AddLocationRequest {
+public class LocationRequest {
 
     private String location;
 
